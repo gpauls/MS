@@ -50,6 +50,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MS.Employee\MS.Employee.csproj">
+      <Project>{93a1edeb-31b5-4746-b5bb-e1ce26616d85}</Project>
+      <Name>MS.Employee</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MS.Infrastructure\MS.Infrastructure.csproj">
+      <Project>{5adb546a-787e-438e-8d4e-c11423b51c23}</Project>
+      <Name>MS.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

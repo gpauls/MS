@@ -56,7 +56,15 @@
     <Compile Include="ErrorHandling\GenericError.cs" />
     <Compile Include="Exceptions\CouldntExtractMessageBodyException.cs" />
     <Compile Include="Exceptions\MessageQueueConsumeTimeoutException.cs" />
+    <Compile Include="Handling\CommandDiscovery.cs" />
+    <Compile Include="Handling\EventDiscovery.cs" />
+    <Compile Include="Handling\ICommandDiscovery.cs" />
     <Compile Include="Handling\ICommandHandler.cs" />
+    <Compile Include="Handling\ICommandRegistrar.cs" />
+    <Compile Include="Handling\IEventDiscovery.cs" />
+    <Compile Include="Handling\IEventHandler.cs" />
+    <Compile Include="Handling\IEventRegistrar.cs" />
+    <Compile Include="Handling\Registrar.cs" />
     <Compile Include="Messaging\EventBus.cs" />
     <Compile Include="Messaging\ICommand.cs" />
     <Compile Include="Messaging\ICommandBus.cs" />
