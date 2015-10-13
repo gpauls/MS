@@ -101,15 +101,25 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
 
                 var responseMsg = function.Invoke(message);
 
-                _channel.BasicAck(deliveryTag: args.DeliveryTag, multiple: false);
-                Logger.Debug($"Done. Acknowledgement sent. [{message.Id}]");
+                // TODO validate responseMsg
 
                 var replyProps = _channel.CreateBasicProperties();
                 replyProps.CorrelationId = args.BasicProperties.CorrelationId;
+                replyProps.ContentType = ContentType;
 
-                args.BasicProperties.ReplyTo;
+                var body = SerializeMessage(responseMsg);
 
-                Publish(responseMsg);
+                var replyQueue = args.BasicProperties.ReplyTo;
+
+                _channel.BasicPublish(exchange: "",
+                    routingKey: replyQueue,
+                    basicProperties: replyProps,
+                    body: body);
+
+                Logger.Debug($"Sent response message [{responseMsg.Id}] to queue: {replyQueue}");
+
+                _channel.BasicAck(deliveryTag: args.DeliveryTag, multiple: false);
+                Logger.Debug($"Done. Acknowledgement sent. [{message.Id}]");
             };
         }
 
