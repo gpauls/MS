@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MS.Employees.Model;
 
-namespace MS.Employee.Services
+namespace MS.Employees.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private static readonly List<Model.Employee> Employees = new List<Model.Employee>();
+        private static readonly List<Employee> Employees = new List<Employee>();
 
-        public void Create(Model.Employee employee)
+        public void Create(Employee employee)
         {
             employee.Id = Employees.Select(e => e.Id).OrderBy(i => i).Last() + 1;
             Employees.Add(employee);

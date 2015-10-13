@@ -1,8 +1,8 @@
-﻿using MS.Employee.Commands;
-using MS.Employee.Services;
+﻿using MS.Employees.Commands;
+using MS.Employees.Services;
 using MS.Infrastructure.Handling;
 
-namespace MS.Employee.Worker
+namespace MS.Employees.Worker
 {
     public class EmployeeHandler : ICommandHandlerResponse<CreateEmployeeCommand, CreateEmployeeResponse>
     {
@@ -17,7 +17,7 @@ namespace MS.Employee.Worker
         {
             // TODO validation
 
-            var employee = new Model.Employee // TODO mapper
+            var employee = new Employees.Model.Employee // TODO mapper
             {
                 FirstName = command.FirstName,
                 LastName = command.LastName,

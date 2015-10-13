@@ -1,4 +1,4 @@
-﻿namespace MS.Employee.Model
+﻿namespace MS.Employees.Model
 {
     public class Employee
     {

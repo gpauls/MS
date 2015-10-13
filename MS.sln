@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{413CCE56-DFB6-4B4B-9A0D-1A98D46EBEB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Employee", "Employee", "{2D641E3E-E513-45D2-B301-E2F6C7AD1D30}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Employees", "Employees", "{2D641E3E-E513-45D2-B301-E2F6C7AD1D30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Employee", "src\MS.Employee\MS.Employee.csproj", "{93A1EDEB-31B5-4746-B5BB-E1CE26616D85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Employees", "src\MS.Employee\MS.Employees.csproj", "{93A1EDEB-31B5-4746-B5BB-E1CE26616D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Employee.Worker", "src\MS.Employee.Worker\MS.Employee.Worker.csproj", "{BE563671-A019-4096-9B5D-E444253F45AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Employees.Worker", "src\MS.Employee.Worker\MS.Employees.Worker.csproj", "{BE563671-A019-4096-9B5D-E444253F45AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Employee.Worker.Console", "src\MS.Employee.Worker.Console\MS.Employee.Worker.Console.csproj", "{538FBC4B-00B4-41E7-8192-9DCCC3B9BD93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Employees.Worker.CLI", "src\MS.Employee.Worker.Console\MS.Employees.Worker.CLI.csproj", "{538FBC4B-00B4-41E7-8192-9DCCC3B9BD93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

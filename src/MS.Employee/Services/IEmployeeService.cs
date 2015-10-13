@@ -1,7 +1,9 @@
-﻿namespace MS.Employee.Services
+﻿using MS.Employees.Model;
+
+namespace MS.Employees.Services
 {
     public interface IEmployeeService
     {
-        void Create (Model.Employee employee);
+        void Create (Employee employee);
     }
 }

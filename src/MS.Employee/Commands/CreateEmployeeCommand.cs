@@ -1,6 +1,6 @@
 ﻿using MS.Infrastructure.Messaging;
 
-namespace MS.Employee.Commands
+namespace MS.Employees.Commands
 {
     public class CreateEmployeeCommand : ICommandReturns<CreateEmployeeResponse>
     {

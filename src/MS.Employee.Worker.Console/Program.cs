@@ -1,7 +1,8 @@
-﻿using MS.Infrastructure;
+﻿using System;
+using MS.Infrastructure;
 using MS.Infrastructure.Messaging;
 
-namespace MS.Employee.Worker.Console
+namespace MS.Employees.Worker.CLI
 {
     class Program
     {
@@ -9,14 +10,14 @@ namespace MS.Employee.Worker.Console
         {
             MSContext.Initialize(new Registrar(),
                 new Infrastructure.Messaging.Registrar(), 
-                new Employee.Registrar());
+                new Employees.Registrar());
 
             var messageChannel = MSContext.Resolve<IMessageChannel>();
 
             messageChannel.Startup();
-            System.Console.WriteLine("Started worker...");
-            System.Console.WriteLine("Press key to exit!");
-            System.Console.ReadLine();
+            Console.WriteLine("Started worker...");
+            Console.WriteLine("Press key to exit!");
+            Console.ReadLine();
             messageChannel.Dispose();
         }
     }

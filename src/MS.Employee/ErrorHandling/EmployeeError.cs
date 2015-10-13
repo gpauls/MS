@@ -1,6 +1,6 @@
 ﻿using MS.Infrastructure.ErrorHandling;
 
-namespace MS.Employee.ErrorHandling
+namespace MS.Employees.ErrorHandling
 {
     public class EmployeeError : Error
     {

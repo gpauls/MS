@@ -1,9 +1,9 @@
-﻿using MS.Employee.Commands;
+﻿using MS.Employees.Commands;
 using MS.Infrastructure;
 using MS.Infrastructure.Handling;
 using SimpleInjector;
 
-namespace MS.Employee.Worker
+namespace MS.Employees.Worker
 {
     public class Registrar : IRegistrar
     {

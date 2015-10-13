@@ -1,8 +1,8 @@
-﻿using MS.Employee.Services;
+﻿using MS.Employees.Services;
 using MS.Infrastructure;
 using SimpleInjector;
 
-namespace MS.Employee
+namespace MS.Employees
 {
     public class Registrar : IRegistrar
     {
