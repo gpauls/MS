@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../src/MS.Employee/MS.Employees.csproj",
+      "bin": {
+        "assembly": "../../src/MS.Employee/obj/{configuration}/MS.Employees.dll",
+        "pdb": "../../src/MS.Employee/obj/{configuration}/MS.Employees.pdb"
+      },
+      "dependencies": {
+        "NLog": "4.1.2",
+        "SimpleInjector": "3.1.0",
+        "MS.Infrastructure": "1.0.0-*"
+      }
+    }
+  }
+}
