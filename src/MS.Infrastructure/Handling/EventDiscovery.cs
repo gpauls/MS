@@ -1,6 +1,9 @@
-﻿using System;
-using System.ComponentModel;
+﻿
+
+using System;
+using System.Linq;
 using System.Reflection;
+using SimpleInjector;
 
 namespace MS.Infrastructure.Handling
 {

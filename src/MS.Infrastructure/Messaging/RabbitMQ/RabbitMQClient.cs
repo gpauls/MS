@@ -89,19 +89,27 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
             }
         }
 
-        public void Consume(string queue, Func<Message, object> function)
+        public void ConsumeAndRespond(string queue, Func<Message, Message> function)
         {
             var consumer = SetupConsumer(queue);
             consumer.Received += (model, args) =>
             {
                 Logger.Debug($"Consumed message from channel: {queue}");
                 var message = DeSerializeMessage(args.Body);
+                // TODO validate message
                 Logger.Debug($"Deserialized message [{message.Id}]");
 
-                function.Invoke(message);
+                var responseMsg = function.Invoke(message);
 
                 _channel.BasicAck(deliveryTag: args.DeliveryTag, multiple: false);
                 Logger.Debug($"Done. Acknowledgement sent. [{message.Id}]");
+
+                var replyProps = _channel.CreateBasicProperties();
+                replyProps.CorrelationId = args.BasicProperties.CorrelationId;
+
+                args.BasicProperties.ReplyTo;
+
+                Publish(responseMsg);
             };
         }
 

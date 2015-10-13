@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
+using SimpleInjector;
 
 namespace MS.Infrastructure.Handling
 {
@@ -20,14 +22,18 @@ namespace MS.Infrastructure.Handling
             {
                 if (typeof (ICommandHandler).IsAssignableFrom(registration.ServiceType))
                 {
-                    var genericArguments = registration.ServiceType.GetGenericArguments();
+                    var genericArguments = registration.ServiceType.GetGenericArguments().ToList();
                     if (genericArguments.Count() == 1)
                     {
                         RegisterCommandHandler(genericArguments[0], registrar);
                     }
-                    else
+                    else if (genericArguments.Count() == 1)
                     {
                         RegisterCommandResponseHandler(genericArguments[0], genericArguments[1], registrar);
+                    }
+                    else
+                    {
+                        throw new Exception("The service " + registration.ServiceType + " must by of type ICommandHandler<T> or ICommandHandler<TRequest, TResponse>");
                     }
                 }
             }

@@ -15,10 +15,9 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
 
         public string HostName { get; set; }
 
-        public RabbitMQServer() // TODO inject this
+        public RabbitMQServer()
         {
             HostName = "localhost";
-            Startup();
         }
 
         public void Startup()

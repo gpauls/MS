@@ -11,7 +11,7 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
 
         public string Queue { get; set; }
         public string CallBackQueue { get; set; }
-
+        public bool IsResponse { get; set; }
         
         public Message()
         {
