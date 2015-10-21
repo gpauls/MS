@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MS.Employees</RootNamespace>
     <AssemblyName>MS.Employees</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,13 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCreateCommand.cs" />
+    <Compile Include="Commands\EmployeeDeleteCommand.cs" />
+    <Compile Include="Commands\EmployeeUpdateCommand.cs" />
     <Compile Include="ErrorHandling\EmployeeError.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\EmployeeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrar.cs" />
-    <Compile Include="Services\EmployeeService.cs" />
-    <Compile Include="Services\IEmployeeService.cs" />
+    <Compile Include="Services\EmployeeQuery.cs" />
+    <Compile Include="Services\IEmployeeQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MS.Infrastructure\MS.Infrastructure.csproj">

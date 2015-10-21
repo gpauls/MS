@@ -4,7 +4,8 @@ namespace MS.Employees.ErrorHandling
 {
     public class EmployeeError : Error
     {
-        public static readonly Error EmailAlreadyExists = new EmployeeError("EmailAlreadyExists");
+        public static Error EmailAlreadyExists => new EmployeeError("EmailAlreadyExists");
+        public static Error EmployeeDoesntExist => new EmployeeError("EmployeeDoesntExist");
 
         public EmployeeError(string value) : base(value)
         {

@@ -9,7 +9,9 @@ namespace MS.Employees.Worker
     {
         public void Register(Container container)
         {
-            container.Register<ICommandHandlerResponse<CreateEmployeeCommand, CreateEmployeeResponse>, EmployeeHandler>();
+            container.Register<ICommandHandlerResponse<EmployeeCreateCommand, EmployeeCreateResponse>, EmployeeHandler>();
+            container.Register<ICommandHandlerResponse<EmployeeUpdateCommand, EmployeeUpdateResponse>, EmployeeHandler>();
+            container.Register<ICommandHandlerResponse<EmployeeDeleteCommand, EmployeeDeleteResponse>, EmployeeHandler>();
         }
     }
 }

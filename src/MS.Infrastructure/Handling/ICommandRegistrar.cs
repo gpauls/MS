@@ -8,6 +8,6 @@ namespace MS.Infrastructure.Handling
 
         void RegisterCommandResponse<TRequest, TResponse>()
             where TRequest : class, ICommand, ICommandReturns<TResponse>
-            where TResponse : class;
+            where TResponse : class, ICommandResponse;
     }
 }

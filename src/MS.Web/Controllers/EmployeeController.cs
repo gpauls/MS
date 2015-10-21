@@ -1,51 +1,67 @@
 ﻿using Microsoft.AspNet.Mvc;
+using MS.Employees.Commands;
+using MS.Employees.Services;
+using MS.Infrastructure.Messaging;
+using MS.Web.Models;
 
 namespace MS.Web.Controllers
 {
     public class EmployeeController : Controller
     {
-        //private readonly ICommandBus _commandBus;
+        private readonly ICommandBus _commandBus;
+        private readonly IEmployeeQuery _employeeQuery;
 
-        //public EmployeeController(ICommandBus commandBus)
-        //{
-        //    _commandBus = commandBus;
-        //}
+        public EmployeeController(ICommandBus commandBus, IEmployeeQuery employeeQuery)
+        {
+            _commandBus = commandBus;
+            _employeeQuery = employeeQuery;
+        }
 
-        //// GET api/values
-        //public IHttpActionResult Get()
-        //{
-        //    return Ok(new[] { "value1", "value2" });
-        //}
+        public IActionResult List()
+        {
+            return Json(_employeeQuery.List());
+        }
 
-        //// GET api/values/5
-        //public IHttpActionResult Get(int id)
-        //{
-        //    return Ok("value");
-        //}
+        public IActionResult Get(long id)
+        {
+            return Json(_employeeQuery.Get(id));
+        }
 
-        //// POST api/values
-        //public IHttpActionResult Post([FromBody]EmployeeCreateModel model)
-        //{
-        //    var response = _commandBus.Execute<CreateEmployeeCommand, CreateEmployeeResponse>(new CreateEmployeeCommand
-        //    {
-        //        FirstName = model.FirstName,
-        //        LastName = model.LastName,
-        //        Email = model.Email
-        //    });
+        [HttpPost]
+        public IActionResult Post([FromBody]EmployeeCreateModel model)
+        {
+            var response = _commandBus.Execute<EmployeeUpdateCommand, EmployeeUpdateResponse>(new EmployeeUpdateCommand
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email
+            });
 
-        //    return response.Succeeded ? Ok() : BadRequest(response.Errors) as IHttpActionResult;
-        //}
+            return response.Succeeded ? Json("ok") : Json("error");
+        }
 
-        //// PUT api/values/5
-        //public IHttpActionResult Put(int id, [FromBody]string value)
-        //{
-        //    return Ok();
-        //}
+        [HttpPut]
+        public IActionResult Put(int id, [FromBody] EmployeeUpdateModel model)
+        {
+            var response = _commandBus.Execute<EmployeeCreateCommand, EmployeeCreateResponse>(new EmployeeCreateCommand
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email
+            });
 
-        //// DELETE api/values/5
-        //public IHttpActionResult Delete(int id)
-        //{
-        //    return Ok();
-        //}
+            return response.Succeeded ? Json("ok") : Json("error");
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var response = _commandBus.Execute<EmployeeDeleteCommand, EmployeeDeleteResponse>(new EmployeeDeleteCommand
+            {
+                Id = id
+            });
+
+            return response.Succeeded ? Json("ok") : Json("error");
+        }
     }
 }

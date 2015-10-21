@@ -22,7 +22,7 @@ namespace MS.Infrastructure.Messaging
 
         public void Startup()
         {
-            var registrar = new Handling.Registrar(_server, _container);
+            var registrar = new Handling.CommandEventRegistrar(_server, _container);
             _commandDiscovery.Register(registrar);
             _eventDiscovery.Register(registrar);
 

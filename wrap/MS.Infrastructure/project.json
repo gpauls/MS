@@ -13,6 +13,19 @@
         "RabbitMQ.Client": "3.5.5",
         "SimpleInjector": "3.1.0"
       }
+    },
+    "net451": {
+      "wrappedProject": "../../src/MS.Infrastructure/MS.Infrastructure.csproj",
+      "bin": {
+        "assembly": "../../src/MS.Infrastructure/obj/{configuration}/MS.Infrastructure.dll",
+        "pdb": "../../src/MS.Infrastructure/obj/{configuration}/MS.Infrastructure.pdb"
+      },
+      "dependencies": {
+        "Newtonsoft.Json": "7.0.1",
+        "NLog": "4.1.2",
+        "RabbitMQ.Client": "3.5.5",
+        "SimpleInjector": "3.1.0"
+      }
     }
   }
 }

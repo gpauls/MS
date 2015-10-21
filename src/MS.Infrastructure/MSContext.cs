@@ -29,6 +29,11 @@ namespace MS.Infrastructure
             return _container.GetInstance<T>();
         }
 
+        public static IServiceProvider GetServiceProvider()
+        {
+            return _container;
+        }
+
         private static void EnsureInitialized()
         {
             if (_container == null) throw new Exception("The YenContext has not been initialized.");

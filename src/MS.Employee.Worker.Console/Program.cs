@@ -9,7 +9,8 @@ namespace MS.Employees.Worker.CLI
         static void Main(string[] args)
         {
             MSContext.Initialize(new Registrar(),
-                new Infrastructure.Messaging.Registrar(), 
+                new Infrastructure.Messaging.Registrar(),
+                new Infrastructure.Handling.Registrar(),
                 new Employees.Registrar());
 
             var messageChannel = MSContext.Resolve<IMessageChannel>();

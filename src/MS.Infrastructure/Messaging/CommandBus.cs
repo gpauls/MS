@@ -17,7 +17,7 @@ namespace MS.Infrastructure.Messaging
             client.Publish(MessageFactory.CreateFromCommand(command));
         }
 
-        public TResponse Execute<TCommand, TResponse>(TCommand command) where TCommand : class, ICommandReturns<TResponse> where TResponse : class
+        public TResponse Execute<TCommand, TResponse>(TCommand command) where TCommand : class, ICommandReturns<TResponse> where TResponse : class, ICommandResponse
         {
             var client = _rabbitMqServer.GetRabbitMQClient();
             var message = client.Call(MessageFactory.CreateFromCommandReturns<TCommand, TResponse>(command));

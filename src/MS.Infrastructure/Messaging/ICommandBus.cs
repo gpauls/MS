@@ -6,6 +6,6 @@
 
         TResponse Execute<TRequest, TResponse>(TRequest command)
             where TRequest : class, ICommandReturns<TResponse>
-            where TResponse : class;
+            where TResponse : class, ICommandResponse;
     }
 }

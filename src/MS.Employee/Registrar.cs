@@ -8,7 +8,7 @@ namespace MS.Employees
     {
         public void Register(Container container)
         {
-            container.Register<IEmployeeService, EmployeeService>();
+            container.Register<IEmployeeQuery, EmployeeQuery>();
         }
     }
 }

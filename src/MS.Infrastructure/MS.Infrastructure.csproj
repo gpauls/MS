@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MS.Infrastructure</RootNamespace>
     <AssemblyName>MS.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -69,11 +69,13 @@
     <Compile Include="Handling\IEventDiscovery.cs" />
     <Compile Include="Handling\IEventHandler.cs" />
     <Compile Include="Handling\IEventRegistrar.cs" />
+    <Compile Include="Handling\CommandEventRegistrar.cs" />
     <Compile Include="Handling\Registrar.cs" />
     <Compile Include="IRegistrar.cs" />
     <Compile Include="Messaging\EventBus.cs" />
     <Compile Include="Messaging\ICommand.cs" />
     <Compile Include="Messaging\ICommandBus.cs" />
+    <Compile Include="Messaging\ICommandResponse.cs" />
     <Compile Include="Messaging\ICommandReturns.cs" />
     <Compile Include="Messaging\IEvent.cs" />
     <Compile Include="Messaging\IEventBus.cs" />
@@ -87,8 +89,9 @@
     <Compile Include="MSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messaging\RabbitMQ\RabbitMQClient.cs" />
-    <Compile Include="ErrorHandling\Result.cs" />
+    <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\Registrar.cs" />
+    <Compile Include="Messaging\ResponseFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RabbitMQ\" />
