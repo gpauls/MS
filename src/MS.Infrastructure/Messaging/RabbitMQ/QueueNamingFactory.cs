@@ -2,24 +2,21 @@
 {
     public class QueueNamingFactory
     {
-        private const string QueuePrefix = "MS.";
-        private const string CommandPrefix = "Command.";
-        private const string EventPrefix = "Event.";
-        private const string CallBackPrefix = "CallBack.";
+        private const string QueuePrefix = "MS";
 
         public static string GetCommandQueue<T>() where T : class, ICommand
         {
-            return QueuePrefix + CommandPrefix + typeof(T);
+            return $"{QueuePrefix}.Command.{typeof(T).Name}";
         }
 
         public static string GetEventQueue<T>() where T : class, IEvent
         {
-            return QueuePrefix + EventPrefix + typeof(T);
+            return $"{QueuePrefix}.Event.{typeof(T).Name}";
         }
 
         public static string GetCallBackQueue<TCommand, TResponse>() where TCommand : class, ICommand where TResponse : class
         {
-            return QueuePrefix + CommandPrefix + CallBackPrefix + $"{typeof(TCommand)}.{typeof (TResponse)}";
+            return $"{QueuePrefix}.Command.{typeof(TCommand).Name}.CallBack.{typeof(TResponse).Name}";
         }
     }
 }
