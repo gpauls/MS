@@ -28,10 +28,11 @@ namespace MS.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]EmployeeCreateModel model)
+        public IActionResult Post(int id, [FromBody]EmployeeCreateModel model)
         {
             var response = _commandBus.Execute<EmployeeUpdateCommand, EmployeeUpdateResponse>(new EmployeeUpdateCommand
             {
+                Id = id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email
@@ -41,7 +42,7 @@ namespace MS.Web.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(int id, [FromBody] EmployeeUpdateModel model)
+        public IActionResult Put([FromBody] EmployeeUpdateModel model)
         {
             var response = _commandBus.Execute<EmployeeCreateCommand, EmployeeCreateResponse>(new EmployeeCreateCommand
             {
