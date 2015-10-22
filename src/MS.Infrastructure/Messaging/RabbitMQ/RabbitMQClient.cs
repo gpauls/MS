@@ -49,6 +49,7 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
             // TODO validate msg
 
             EnsureQueueIsCreated(message.Queue);
+            EnsureQueueIsCreated(message.CallBackQueue);
 
             var properties = _channel.CreateBasicProperties();
             properties.Persistent = true;
