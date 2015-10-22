@@ -1185,6 +1185,17 @@
           "lib/net45/SimpleInjector.dll": {}
         }
       },
+      "SimpleInjector.Extensions.ExecutionContextScoping/3.1.0": {
+        "dependencies": {
+          "SimpleInjector": "3.1.0"
+        },
+        "compile": {
+          "lib/net45/SimpleInjector.Extensions.ExecutionContextScoping.dll": {}
+        },
+        "runtime": {
+          "lib/net45/SimpleInjector.Extensions.ExecutionContextScoping.dll": {}
+        }
+      },
       "SimpleInjector.Integration.Web/3.1.0": {
         "dependencies": {
           "SimpleInjector": "3.1.0"
@@ -2242,6 +2253,18 @@
         "lib/portable-net4+sl4+wp8+win8+wpa81/SimpleInjector.xml"
       ]
     },
+    "SimpleInjector.Extensions.ExecutionContextScoping/3.1.0": {
+      "sha512": "Jp7LMUHKZVY7rru1Eyczd940HdIdKxsM9OC8/TL2+rtOXYPIRM4YbXV0827KgfAZeOVIdMONsWYUjgJH7WWb+w==",
+      "files": [
+        "SimpleInjector.Extensions.ExecutionContextScoping.3.1.0.nupkg",
+        "SimpleInjector.Extensions.ExecutionContextScoping.3.1.0.nupkg.sha512",
+        "SimpleInjector.Extensions.ExecutionContextScoping.nuspec",
+        "lib/dotnet/SimpleInjector.Extensions.ExecutionContextScoping.dll",
+        "lib/dotnet/SimpleInjector.Extensions.ExecutionContextScoping.xml",
+        "lib/net45/SimpleInjector.Extensions.ExecutionContextScoping.dll",
+        "lib/net45/SimpleInjector.Extensions.ExecutionContextScoping.xml"
+      ]
+    },
     "SimpleInjector.Integration.Web/3.1.0": {
       "sha512": "3Y/urhz3+PRkMUnEpKGckf/RCLzNEkcXD+9bgQXi+rdSJUgZMHgdnkG05NCOY0foIoTrpULgElNSdVFrcRbjaA==",
       "files": [
@@ -2348,7 +2371,8 @@
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta5",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta5",
       "System.Collections >= 4.0.10-beta-23019",
-      "SimpleInjector.MVC3 >= 3.1.0"
+      "SimpleInjector.MVC3 >= 3.1.0",
+      "SimpleInjector.Extensions.ExecutionContextScoping >= 3.1.0"
     ],
     "DNX,Version=v4.5.1": [
       "MS.Employees >= 1.0.0-*",

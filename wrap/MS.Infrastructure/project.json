@@ -24,7 +24,8 @@
         "Newtonsoft.Json": "7.0.1",
         "NLog": "4.1.2",
         "RabbitMQ.Client": "3.5.5",
-        "SimpleInjector": "3.1.0"
+        "SimpleInjector": "3.1.0",
+        "SimpleInjector.Extensions.ExecutionContextScoping": "3.1.0"
       }
     }
   }

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Diagnostics;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Routing;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
-using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
+using MS.Web.AppStart;
+using MS.Web.Infrastructure;
 
 namespace MS.Web
 {
@@ -24,6 +19,8 @@ namespace MS.Web
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            MSMvcContext.Initialize();
         }
 
         public IConfiguration Configuration { get; set; }
@@ -37,11 +34,30 @@ namespace MS.Web
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
+
+            services.AddInstance(MSMvcContext.CreateControllerActivator());
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            MSMvcContext.RegisterControllers(app);
+
+            MSMvcContext.Register(new Registrar(),
+                new MS.Infrastructure.Messaging.Registrar(),
+                new MS.Infrastructure.Handling.Registrar(),
+                new MS.Employees.Registrar());
+
+            MSMvcContext.Verify();
+
+            app.Use(async (context, next) =>
+            {
+                using (MSMvcContext.BeginExecutionContextScope())
+                {
+                    await next();
+                }
+            });
+
             loggerFactory.MinimumLevel = LogLevel.Information;
             loggerFactory.AddConsole();
 
@@ -73,6 +89,8 @@ namespace MS.Web
                 // Uncomment the following line to add a route for porting Web API 2 controllers.
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
+
+            Boot.AppStart();
         }
     }
 }

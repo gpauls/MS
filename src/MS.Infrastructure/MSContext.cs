@@ -6,37 +6,37 @@ namespace MS.Infrastructure
     // ReSharper disable once InconsistentNaming
     public static class MSContext
     {
-        private static Container _container;
-        private static object _lock = new object();
+        public static Container Container { get; private set; }
+        private static readonly object Lock = new object();
 
         public static void Initialize(params IRegistrar[] registrars)
         {
-            lock (_lock)
+            lock (Lock)
             {
-                if (_container != null) throw new Exception("The context was already initialized!");
-                _container = new Container();
+                if (Container != null) throw new Exception("The context was already initialized!");
+                Container = new Container();
                 //_container.Options.AllowOverridingRegistrations = true;
                 foreach (var registrar in registrars)
                 {
-                    registrar.Register(_container);
+                    registrar.Register(Container);
                 }
             }
+        }
+
+        public static void Verify()
+        {
+            Container.Verify();
         }
 
         public static T Resolve<T>() where T : class
         {
             EnsureInitialized();
-            return _container.GetInstance<T>();
+            return Container.GetInstance<T>();
         }
-
-        public static IServiceProvider GetServiceProvider()
-        {
-            return _container;
-        }
-
+        
         private static void EnsureInitialized()
         {
-            if (_container == null) throw new Exception("The YenContext has not been initialized.");
+            if (Container == null) throw new Exception("The YenContext has not been initialized.");
         }
     }
 }
