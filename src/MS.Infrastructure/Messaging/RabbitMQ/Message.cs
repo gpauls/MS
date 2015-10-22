@@ -8,7 +8,8 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
         public Guid Id { get; set; }
         public DateTime TimestampCreated { get; set; }
         public object Body { get; set; }
-
+        public string BodyType { get; set; }
+        
         public string Queue { get; set; }
         public string CallBackQueue { get; set; }
         public bool IsResponse { get; set; }

@@ -164,6 +164,7 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
 
         private byte[] SerializeMessage(Message message)
         {
+            message.BodyType = message.Body.GetType().AssemblyQualifiedName;
             var json = JsonConvert.SerializeObject(message);
             return Encoding.UTF8.GetBytes(json);
         }
@@ -171,7 +172,17 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
         private Message DeSerializeMessage(byte[] bytes)
         {
             var json = Encoding.UTF8.GetString(bytes);
-            return JsonConvert.DeserializeObject<Message>(json);
+            var msg = JsonConvert.DeserializeObject<Message>(json);
+
+            var body = msg.Body as JObject;
+            if (body == null || msg.BodyType == null)
+            {
+                throw new Exception("couldnt extract body from message!"); // TODO proper exception
+            }
+
+            var bodyType = Type.GetType(msg.BodyType);
+            msg.Body = body.ToObject(bodyType);
+            return msg;
         }
     }
 }
