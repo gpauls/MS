@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../src/MS.Employee.Worker/MS.Employees.Worker.csproj",
+      "bin": {
+        "assembly": "../../src/MS.Employee.Worker/obj/{configuration}/MS.Employees.Worker.dll",
+        "pdb": "../../src/MS.Employee.Worker/obj/{configuration}/MS.Employees.Worker.pdb"
+      },
+      "dependencies": {
+        "NLog": "4.1.2",
+        "SimpleInjector": "3.1.0",
+        "MS.Employees": "1.0.0-*",
+        "MS.Infrastructure": "1.0.0-*"
+      }
+    }
+  }
+}

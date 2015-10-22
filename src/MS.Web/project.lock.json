@@ -2376,7 +2376,8 @@
     ],
     "DNX,Version=v4.5.1": [
       "MS.Employees >= 1.0.0-*",
-      "MS.Infrastructure >= 1.0.0-*"
+      "MS.Infrastructure >= 1.0.0-*",
+      "MS.Employees.Worker >= 1.0.0-*"
     ]
   }
 }

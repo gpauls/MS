@@ -46,7 +46,9 @@ namespace MS.Web
             MSMvcContext.Register(new Registrar(),
                 new MS.Infrastructure.Messaging.Registrar(),
                 new MS.Infrastructure.Handling.Registrar(),
-                new MS.Employees.Registrar());
+                new MS.Employees.Registrar(),
+                new MS.Employees.Worker.Registrar() // TODO dont start this one with web app, but with command line instead
+                );
 
             MSMvcContext.Verify();
 

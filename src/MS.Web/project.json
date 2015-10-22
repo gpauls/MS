@@ -27,7 +27,8 @@
         "dnx451": {
             "dependencies": {
                 "MS.Employees": "1.0.0-*",
-                "MS.Infrastructure": "1.0.0-*"
+                "MS.Infrastructure": "1.0.0-*",
+                "MS.Employees.Worker": "1.0.0-*"
             }
 
         }

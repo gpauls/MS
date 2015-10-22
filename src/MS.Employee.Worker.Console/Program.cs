@@ -11,7 +11,8 @@ namespace MS.Employees.Worker.CLI
             MSContext.Initialize(new Registrar(),
                 new Infrastructure.Messaging.Registrar(),
                 new Infrastructure.Handling.Registrar(),
-                new Employees.Registrar());
+                new Employees.Registrar(),
+                new Employees.Worker.Registrar());
             MSContext.Verify();
 
             var messageChannel = MSContext.Resolve<IMessageChannel>();
