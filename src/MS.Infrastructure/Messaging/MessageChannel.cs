@@ -25,8 +25,6 @@ namespace MS.Infrastructure.Messaging
             var registrar = new Handling.CommandEventRegistrar(_server, _container);
             _commandDiscovery.Register(registrar);
             _eventDiscovery.Register(registrar);
-
-            _server.Startup();
         }
 
         public void Dispose()
