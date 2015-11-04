@@ -11,7 +11,7 @@
 
         public static Message<TCommand> CreateFromCommandReturns<TCommand, TResponse>(TCommand command) 
             where TCommand : class, ICommandReturns<TResponse> 
-            where TResponse : class
+            where TResponse : class, ICommandResponse
         {
             var msg = Message<TCommand>.Create(command);
             msg.Queue = QueueNamingFactory.GetCommandQueue<TCommand>();

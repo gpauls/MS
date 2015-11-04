@@ -11,7 +11,8 @@ namespace MS.Infrastructure.Handling
     }
 
     public interface ICommandHandlerResponse<in TRequest, out TResponse> : ICommandHandler
-        where TRequest : ICommandReturns<TResponse>
+        where TRequest : class, ICommandReturns<TResponse>
+        where TResponse : class, ICommandResponse
     {
         TResponse Handle(TRequest command);
     }
