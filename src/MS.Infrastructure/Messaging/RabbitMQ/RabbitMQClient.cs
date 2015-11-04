@@ -126,7 +126,7 @@ namespace MS.Infrastructure.Messaging.RabbitMQ
 
         public void Consume(string queue, Action<Message> function)
         {
-            var consumer = new EventingBasicConsumer(_channel);
+            var consumer = SetupConsumer(queue);
             consumer.Received += (model, args) =>
             {
                 Logger.Debug($"Consumed message from channel: {queue}");
